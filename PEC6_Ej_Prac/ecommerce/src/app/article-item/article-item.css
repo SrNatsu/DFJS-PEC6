@@ -1,0 +1,118 @@
+.card {
+  width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: lightgray;
+  box-shadow: none;
+  border-radius: 10px;
+  color: black;
+  transition: transform .3s ease-out;
+  will-change: transform;
+}
+
+.card.sale {
+  background-color: lightgreen;
+  box-shadow: 0 2px 10px lightgreen;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  height: 250px;
+  width: 100%;
+}
+
+.image {
+  width: 90%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.metadata {
+  display: flex;
+  flex-direction: column;
+  padding: .5rem 1rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  margin-top: .5rem;
+  flex-grow: 1;
+}
+
+.heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.name {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.price {
+  margin: 0;
+  padding: .7rem;
+  background-color: lightyellow;
+  width: fit-content;
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+
+.price.notSale {
+  color: gray;
+}
+
+.onSale {
+  color: red;
+  margin: 0;
+}
+
+.onSale.sale {
+  color:white;
+  background-color: green;
+  box-shadow: 2px 4px 10px darkgreen;
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+}
+
+.cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.quantity, .decrement, .increment {
+  font-size: 1.5rem;
+  padding: .5rem;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 0;
+}
+
+.decrement, .increment {
+  padding: .5rem 1rem;
+  background-color: whitesmoke;
+}
+
+.decrement:disabled {
+  background-color: lightgray;
+  cursor:not-allowed;
+}

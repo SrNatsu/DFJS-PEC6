@@ -1,0 +1,23 @@
+<nav class="nav" id="nav">
+    <div class="left">
+      <h1 class="title" id="title">DFJS Tienda</h1>
+
+      <ul class="menu" id="menu">
+        <li class="menu-item" id="menu-item"><a (click)="changeView('list', $event)"
+            [class.active]="currentView === 'list'" class="link" id="link">Inicio</a></li>
+        <li class="menu-item" id="menu-item"><a (click)="changeView('list', $event)"
+            [class.active]="currentView === 'list'" class="link" id="link">Artículos</a></li>
+        <li class="menu-item" id="menu-item"><a (click)="changeView('template', $event)"
+            [class.active]="currentView === 'template'" class="link" id="link">Nuevo artículo template</a></li>
+        <li class="menu-item" id="menu-item"><a (click)="changeView('reactive', $event)"
+            [class.active]="currentView === 'reactive'" class="link" id="link">Nuevo artículo reactivo</a></li>
+      </ul>
+    </div>
+
+    <div class="right">
+      <form action="" method="POST" class="form" id="form">
+        <input type="text" name="article" class="article" id="article" placeholder="Buscar artículo">
+        <button type="submit" class="button" id="button" name="button">Buscar</button>
+      </form>
+    </div>
+</nav>

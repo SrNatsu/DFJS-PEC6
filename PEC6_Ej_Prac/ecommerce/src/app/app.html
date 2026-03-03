@@ -1,0 +1,11 @@
+<app-navbar [currentView]="view" (viewChange)="onViewChange($event)"></app-navbar>
+
+<main class="main" id="main">
+  @if (view === 'list') {
+  <app-article-list></app-article-list>
+  } @else if (view === 'template') {
+  <app-article-new-template></app-article-new-template>
+  } @else if(view === 'reactive') {
+  <app-article-new-reactive></app-article-new-reactive>
+  }
+</main>

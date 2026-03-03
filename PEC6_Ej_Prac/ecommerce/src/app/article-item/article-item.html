@@ -1,0 +1,19 @@
+<div class="card" id="card" [class.sale]="article.isOnSale">
+  <figure id="figure" class="figure">
+    <img src="{{ article.imageUrl }}" alt="Imagen del artículo" class="image" id="image">
+  </figure>
+
+  <div class="metadata">
+    <div class="heading">
+      <h1 class="name" id="name">{{ article.name }}</h1>
+      <p id="price" class="price" [ngClass]="{'notSale' : !article.isOnSale}">${{ article.price }}</p>
+    </div>
+    <p id="onSale" class="onSale" [class.sale]="article.isOnSale">{{ article.isOnSale ? 'On sale!' : 'Not on sale' }}
+    </p>
+    <div class="cart" *ngIf="article.isOnSale">
+      <button id="decrement" class="decrement" (click)="changeQuantity(-1)" [disabled]="article.quantityInCart === 0">-</button>
+      <p id="quantity" class="quantity">{{ article.quantityInCart }}</p>
+      <button id="increment" class="increment" (click)="changeQuantity(+1)" *ngIf="article.isOnSale">+</button>
+    </div>
+  </div>
+</div>

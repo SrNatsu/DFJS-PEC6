@@ -1,0 +1,15 @@
+.title {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  border: 1px solid lightgray;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 2px 4px 10px lightgray;
+}
