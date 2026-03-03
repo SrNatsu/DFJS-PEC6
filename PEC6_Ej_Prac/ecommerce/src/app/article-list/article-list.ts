@@ -4,7 +4,14 @@ import { ArticleItem } from '../article-item/article-item';
 import { CommonModule } from '@angular/common';
 import { ArticleQuantityChange } from '../models/article-quantity-change';
 import { ArticleService } from '../services/article-service';
-import { Observable, distinctUntilChanged, switchMap, debounceTime, startWith } from 'rxjs';
+import {
+  Observable,
+  distinctUntilChanged,
+  switchMap,
+  debounceTime,
+  startWith,
+  BehaviorSubject,
+} from 'rxjs';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 
 @Component({
@@ -67,21 +74,27 @@ export class ArticleList implements OnInit {
   name: FormControl = new FormControl('');
 
   private articleService = inject(ArticleService);
+  private searchTerm$ = new BehaviorSubject<string>('');
 
   constructor() {}
 
   ngOnInit(): void {
-    this.articleList$ = this.name.valueChanges.pipe(
-      startWith(''),
-      debounceTime(300),
-      distinctUntilChanged(),
-      switchMap((name) => this.articleService.getArticles(name)),
+    this.name.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((text) => this.searchTerm$.next(text));
+
+    this.articleList$ = this.searchTerm$.pipe(
+      switchMap((term) => this.articleService.getArticles(term)),
     );
   }
 
   onChangeQuantity(articleQuantityChange: ArticleQuantityChange) {
     this.articleService
       .changeQuantity(articleQuantityChange.article.id, articleQuantityChange.quantity)
-      .subscribe();
+      .subscribe({
+        next: () => {
+          this.searchTerm$.next(this.name.value);
+        },
+      });
   }
 }
