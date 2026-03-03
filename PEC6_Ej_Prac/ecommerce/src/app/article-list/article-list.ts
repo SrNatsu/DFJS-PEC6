@@ -80,9 +80,8 @@ export class ArticleList implements OnInit {
   }
 
   onChangeQuantity(articleQuantityChange: ArticleQuantityChange) {
-    this.articleService.changeQuantity(
-      articleQuantityChange.article.id,
-      articleQuantityChange.quantity,
-    );
+    this.articleService
+      .changeQuantity(articleQuantityChange.article.id, articleQuantityChange.quantity)
+      .subscribe();
   }
 }
