@@ -10,11 +10,13 @@ import { CommonModule, NgClass } from '@angular/common';
 
 import { Article } from '../models/article';
 import { ArticleQuantityChange } from '../models/article-quantity-change';
+import { PricePipe } from '../pipes/price-pipe';
+import { ImagePipe } from '../pipes/image-pipe';
 
 @Component({
   selector: 'app-article-item',
   standalone: true,
-  imports: [CommonModule, NgClass],
+  imports: [CommonModule, NgClass, PricePipe, ImagePipe],
   templateUrl: './article-item.html',
   styleUrl: './article-item.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

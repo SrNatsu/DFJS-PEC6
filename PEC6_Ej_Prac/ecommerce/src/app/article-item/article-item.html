@@ -1,12 +1,12 @@
 <div class="card" id="card" [class.sale]="article.isOnSale">
   <figure id="figure" class="figure">
-    <img src="{{ article.imageUrl }}" alt="Imagen del artículo" class="image" id="image">
+    <img src="{{ article.imageUrl | image }}" alt="Imagen del artículo" class="image" id="image">
   </figure>
 
   <div class="metadata">
     <div class="heading">
       <h1 class="name" id="name">{{ article.name }}</h1>
-      <p id="price" class="price" [ngClass]="{'notSale' : !article.isOnSale}">${{ article.price }}</p>
+      <p id="price" class="price" [ngClass]="{'notSale' : !article.isOnSale}">{{ article.price | price }}</p>
     </div>
     <p id="onSale" class="onSale" [class.sale]="article.isOnSale">{{ article.isOnSale ? 'On sale!' : 'Not on sale' }}
     </p>
