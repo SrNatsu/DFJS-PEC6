@@ -7,12 +7,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ArticleService {
-  private apiUrl = `http://localhost:3000/api/articles`;
+  private apiUrl = `http://localhost:3000/api/articles/`;
 
   private httpClient = inject(HttpClient);
 
-  getArticles(): Observable<Article[]> {
-    return this.httpClient.get<Article[]>(this.apiUrl);
+  getArticles(query: string): Observable<Article[]> {
+    return this.httpClient.get<Article[]>(this.apiUrl, { params: { q: query } });
   }
 
   changeQuantity(articleID: number, changeInQuantity: number): Observable<Article> {
